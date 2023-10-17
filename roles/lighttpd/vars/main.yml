@@ -1,0 +1,5 @@
+---
+dir_server_path: "/meu_diretorio_web"
+html_path: "files/index.html"
+server_port: "8080"
+lighttpd_conf_path: "/etc/lighttpd/"

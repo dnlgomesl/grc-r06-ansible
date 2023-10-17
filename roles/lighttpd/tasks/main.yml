@@ -1,0 +1,23 @@
+---
+- name: "Atualiza lista de pacotes apt e instala pacote lighttpd"
+  apt:
+    update_cache: yes
+    name: "lighttpd"
+    state: present
+
+- name: "Cria diretório /meu_diretorio_web"
+  file:
+    path: "{{ dir_server_path }}"
+    state: directory
+
+- name: "Copia index.html para diretório web"
+  copy:
+    src: "{{ html_path }}"
+    dest: "{{ dir_server_path }}"
+    mode: 0644
+
+- name: "Copia arquivo de configuração do lighttpd"
+  template:
+    src: templates/lighttpd.conf
+    dest: "{{ lighttpd_conf_path }}"
+  notify: Reinicia Lighttpd

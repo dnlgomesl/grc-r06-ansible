@@ -1,0 +1,6 @@
+---
+- name: "Reinicia Lighttpd"
+  service:
+    name: lighttpd
+    enabled: yes
+    state: restarted
